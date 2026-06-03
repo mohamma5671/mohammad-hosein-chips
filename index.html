@@ -314,3 +314,46 @@ setInterval(()=>{
 </body>
 </html>
 <img src="logo.png" style="width:200px;border:3px solid red;">
+let cart=[];
+
+function addToCart(){
+    let found = cart.find(c => c.name === current.name);
+
+    if(found){
+        found.qty += 1;
+    }else{
+        cart.push({...current, qty:1});
+    }
+
+    toast();
+}
+
+function openCart(){
+    let box=document.getElementById("cartBox");
+
+    if(cart.length==0){
+        box.innerHTML="سبد خالی است";
+        return;
+    }
+
+    let total=0;
+    let html="";
+
+    cart.forEach((c,i)=>{
+        let sum = c.price * c.qty;
+        total += sum;
+
+        html+=`
+        ${c.name} ×${c.qty} = ${sum}
+        <button onclick="removeItem(${i})">❌</button><br>
+        `;
+    });
+
+    html+="<hr><b>جمع کل: "+total+"</b>";
+    box.innerHTML=html;
+}
+
+function removeItem(i){
+    cart.splice(i,1);
+    openCart();
+}
