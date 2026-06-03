@@ -1,17 +1,103 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa">
 <head>
-<title>چیپس خانگی</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>چیپس خانگی محمد</title>
+
+<style>
+body{
+    font-family: Arial;
+    margin:0;
+    background:#fff7e6;
+    direction: rtl;
+}
+
+header{
+    background:#ff9800;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+.container{
+    padding:20px;
+}
+
+.card{
+    background:white;
+    padding:15px;
+    margin:10px 0;
+    border-radius:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+.price{
+    color:green;
+    font-size:18px;
+    font-weight:bold;
+}
+
+button{
+    background:#25D366;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:10px;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+button:hover{
+    background:#1da851;
+}
+
+footer{
+    text-align:center;
+    padding:15px;
+    background:#eee;
+    margin-top:20px;
+}
+</style>
+
 </head>
+
 <body>
 
-<h1>فروش چیپس خانگی 🍟</h1>
+<header>
+<h1>🍟 چیپس خانگی محمد</h1>
+<p>خوشمزه • تازه • بدون مواد نگهدارنده</p>
+</header>
 
-<p>چیپس نمکی - 50 هزار تومان</p>
+<div class="container">
 
-<p>چیپس فلفلی - 60 هزار تومان</p>
+<div class="card">
+<h2>چیپس فلفلی 60 گرمی</h2>
+<p>طعم تند و خوشمزه</p>
+<p class="price">۷۰,۰۰۰ تومان</p>
+<button onclick="order()">سفارش در واتساپ</button>
+</div>
 
-<p>چیپس سرکه‌ای - 55 هزار تومان</p>
+<div class="card">
+<h2>چیپس نمکی 60 گرمی</h2>
+<p>طعم ساده و کلاسیک</p>
+<p class="price">۸۰,۰۰۰ تومان</p>
+<button onclick="order()">سفارش در واتساپ</button>
+</div>
+
+</div>
+
+<footer>
+© 2026 چیپس خانگی محمد | همه حقوق محفوظ است
+</footer>
+
+<script>
+function order(){
+    let phone = "989134689062
+    let msg = "سلام، می‌خوام چیپس سفارش بدم";
+    window.open("https://wa.me/" + phone + "?text=" + msg);
+}
+</script>
 
 </body>
 </html>
