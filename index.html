@@ -3,284 +3,318 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>چیپس خانگی محمد</title>
+<title>چیپس محمد | فروشگاه رسمی</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
+:root{
+    --main:#ff6b00;
+    --bg:#f5f7fb;
+}
+
 body{
     margin:0;
     font-family:Vazirmatn;
     direction:rtl;
-    background:#f5f7fb;
+    background:var(--bg);
 }
 
-/* هدر */
+/* HEADER */
 header{
     background:linear-gradient(135deg,#ff9800,#ff5722);
     color:white;
     text-align:center;
-    padding:40px 15px;
-    border-bottom-left-radius:40px;
-    border-bottom-right-radius:40px;
+    padding:20px;
 }
 
-/* منو */
+.logo{
+    width:60px;
+    border-radius:50%;
+}
+
+/* SLIDER */
+.slider{
+    position:relative;
+    height:170px;
+    overflow:hidden;
+}
+
+.slide{
+    position:absolute;
+    width:100%;
+    height:170px;
+    object-fit:cover;
+    opacity:0;
+    transition:1s;
+}
+
+.slide.active{
+    opacity:1;
+}
+
+/* NAV */
 nav{
-    position:sticky;
-    top:0;
-    background:white;
     display:flex;
     justify-content:center;
     gap:10px;
+    background:white;
     padding:10px;
-    box-shadow:0 3px 12px rgba(0,0,0,0.1);
-    z-index:10;
+    position:sticky;
+    top:0;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
 
 nav button{
     border:none;
-    padding:10px 15px;
-    border-radius:12px;
-    cursor:pointer;
+    padding:10px;
+    border-radius:10px;
     background:#eee;
-    transition:0.2s;
 }
 
-nav button:hover{
-    transform:scale(1.05);
-    background:#ddd;
-}
-
-/* سرچ */
-#search{
-    width:90%;
-    max-width:420px;
-    margin:15px auto;
-    display:block;
-    padding:12px;
-    border-radius:12px;
-    border:1px solid #ccc;
-}
-
-/* محصولات */
+/* PRODUCTS */
 .container{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:18px;
-    padding:20px;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+    padding:15px;
 }
 
 .card{
     background:white;
-    border-radius:20px;
+    border-radius:15px;
     overflow:hidden;
-    box-shadow:0 5px 18px rgba(0,0,0,0.1);
-    transition:0.25s;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
 }
 
-.card:hover{
-    transform:translateY(-7px);
-}
-
-/* عکس */
 .card img{
     width:100%;
-    height:160px;
+    height:140px;
     object-fit:cover;
 }
 
-/* محتوا */
 .content{
-    padding:15px;
+    padding:10px;
 }
 
 .price{
-    color:#2ecc71;
-    font-size:18px;
+    color:green;
     font-weight:bold;
 }
 
-/* دکمه */
-button{
-    border:none;
-    cursor:pointer;
-}
-
+/* BUTTON */
 .add{
     width:100%;
-    padding:12px;
+    padding:10px;
     background:#25D366;
     color:white;
-    border-radius:12px;
-    margin-top:10px;
+    border:none;
+    border-radius:10px;
 }
 
-/* سبد */
+/* CART */
 .cart{
     background:white;
-    margin:20px;
-    padding:20px;
-    border-radius:20px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    margin:15px;
+    padding:15px;
+    border-radius:15px;
 }
 
-.remove{
-    background:red;
+/* TOAST */
+#toast{
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#333;
     color:white;
-    padding:5px 8px;
-    border-radius:8px;
-    margin-right:5px;
+    padding:10px 15px;
+    border-radius:10px;
+    opacity:0;
+    transition:0.4s;
 }
 
-/* فوتر */
+/* PRODUCT PAGE */
+#productPage{
+    display:none;
+    padding:15px;
+    background:white;
+}
+
+.comment{
+    background:#f1f1f1;
+    padding:8px;
+    margin:5px 0;
+    border-radius:8px;
+}
+
 footer{
     text-align:center;
     padding:15px;
     background:#222;
     color:white;
 }
-</style>
 
+@media(max-width:600px){
+    header h1{font-size:18px;}
+    .slider{height:140px;}
+}
+</style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header>
-<h1>🍟 چیپس خانگی محمد</h1>
-<p>تازه • خوشمزه • حرفه‌ای • دست‌ساز</p>
+<img src="https://api.dicebear.com/7.x/shapes/png?seed=chips" class="logo">
+<h1>چیپس محمد</h1>
+<p>فروشگاه رسمی چیپس خانگی</p>
 </header>
 
+<!-- SLIDER -->
+<div class="slider">
+<img class="slide active" src="https://images.unsplash.com/photo-1604908177522-0401f0f0f0c8">
+<img class="slide" src="https://images.unsplash.com/photo-1601050690597-df0568f70950">
+<img class="slide" src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60">
+</div>
+
+<!-- NAV -->
 <nav>
-<button onclick="filter('all')">همه</button>
-<button onclick="filter('فلفلی')">فلفلی</button>
-<button onclick="filter('نمکی')">نمکی</button>
-<button onclick="filter('پنیری')">پنیری</button>
+<button onclick="home()">خانه</button>
+<button onclick="openCart()">سبد خرید</button>
 </nav>
 
-<input id="search" placeholder="🔍 جستجوی چیپس..." onkeyup="search()">
+<!-- HOME -->
+<div class="container" id="home">
 
-<!-- محصولات -->
-<div class="container">
-
-<!-- فلفلی -->
-<div class="card" data-type="فلفلی">
-<img src="https://images.unsplash.com/photo-1604908177522-0401f0f0f0c8?auto=format&fit=crop&w=800&q=60">
+<div class="card" onclick="openProduct('چیپس فلفلی',70000,'https://images.unsplash.com/photo-1604908177522-0401f0f0f0c8')">
+<img src="https://images.unsplash.com/photo-1604908177522-0401f0f0f0c8">
 <div class="content">
 <h3>چیپس فلفلی 🔥</h3>
-<p>طعم تند و خوشمزه</p>
-<p class="price">۷۰,۰۰۰ تومان</p>
-<button class="add" onclick="add('چیپس فلفلی',70000)">افزودن به سبد</button>
+<p class="price">۷۰,۰۰۰</p>
 </div>
 </div>
 
-<!-- نمکی -->
-<div class="card" data-type="نمکی">
-<img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=60">
+<div class="card" onclick="openProduct('چیپس نمکی',80000,'https://images.unsplash.com/photo-1601050690597-df0568f70950')">
+<img src="https://images.unsplash.com/photo-1601050690597-df0568f70950">
 <div class="content">
 <h3>چیپس نمکی 😋</h3>
-<p>طعم کلاسیک</p>
-<p class="price">۸۰,۰۰۰ تومان</p>
-<button class="add" onclick="add('چیپس نمکی',80000)">افزودن به سبد</button>
+<p class="price">۸۰,۰۰۰</p>
 </div>
 </div>
 
-<!-- پنیری -->
-<div class="card" data-type="پنیری">
-<img src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60?auto=format&fit=crop&w=800&q=60">
+<div class="card" onclick="openProduct('چیپس پنیری',95000,'https://images.unsplash.com/photo-1621939514649-280e2ee25f60')">
+<img src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60">
 <div class="content">
 <h3>چیپس پنیری 🧀</h3>
-<p>طعم پنیر واقعی</p>
-<p class="price">۹۵,۰۰۰ تومان</p>
-<button class="add" onclick="add('چیپس پنیری',95000)">افزودن به سبد</button>
+<p class="price">۹۵,۰۰۰</p>
 </div>
 </div>
 
 </div>
 
-<!-- سبد -->
+<!-- PRODUCT PAGE -->
+<div id="productPage">
+
+<h2 id="pName"></h2>
+<p id="pPrice"></p>
+
+<button class="add" onclick="addToCart()">افزودن به سبد</button>
+
+<h3>⭐ نظرات کاربران</h3>
+<div class="comment">خیلی خوشمزه 😍</div>
+<div class="comment">کیفیت عالی 👍</div>
+<div class="comment">بسته‌بندی خوب بود 📦</div>
+
+</div>
+
+<!-- CART -->
 <div class="cart">
 <h2>🛒 سبد خرید</h2>
-<div id="cartBox">سبد خالی است</div>
-<br>
-<button class="add" onclick="send()">ارسال سفارش در واتساپ</button>
+<div id="cartBox">خالی است</div>
+<button class="add" onclick="send()">ثبت سفارش در واتساپ</button>
 </div>
 
-<footer>
-© 2026 چیپس خانگی محمد | همه حقوق محفوظ است
-</footer>
+<!-- TOAST -->
+<div id="toast">اضافه شد ✔</div>
 
 <script>
 
-let cart = [];
+let cart=[];
+let current={};
 
-function add(name,price){
-    cart.push({name,price});
-    render();
+/* HOME */
+function home(){
+    document.getElementById("home").style.display="grid";
+    document.getElementById("productPage").style.display="none";
 }
 
-function render(){
-    let box = document.getElementById("cartBox");
+/* PRODUCT */
+function openProduct(name,price,img){
+    current={name,price};
+
+    document.getElementById("home").style.display="none";
+    document.getElementById("productPage").style.display="block";
+
+    document.getElementById("pName").innerText=name;
+    document.getElementById("pPrice").innerText=price+" تومان";
+}
+
+/* CART */
+function addToCart(){
+    cart.push(current);
+    toast();
+}
+
+/* RENDER CART */
+function openCart(){
+    let box=document.getElementById("cartBox");
 
     if(cart.length==0){
-        box.innerHTML = "سبد خالی است";
+        box.innerHTML="سبد خالی است";
         return;
     }
 
-    let total = 0;
-    let html = "";
-
-    cart.forEach((c,i)=>{
-        html += `
-        <p>
-        ${c.name} - ${c.price} تومان
-        <button class="remove" onclick="removeItem(${i})">حذف</button>
-        </p>`;
-        total += c.price;
-    });
-
-    html += "<hr><b>جمع کل: "+total+" تومان</b>";
-    box.innerHTML = html;
-}
-
-function removeItem(i){
-    cart.splice(i,1);
-    render();
-}
-
-function send(){
-    let phone = "989134701229";
-
-    if(cart.length==0){
-        alert("سبد خالی است");
-        return;
-    }
-
-    let msg = "🍟 سفارش جدید:\n\n";
+    let total=0;
+    let html="";
 
     cart.forEach(c=>{
-        msg += "▪ " + c.name + " - " + c.price + " تومان\n";
+        html+=c.name+" - "+c.price+"<br>";
+        total+=c.price;
+    });
+
+    html+="<hr><b>جمع کل: "+total+"</b>";
+    box.innerHTML=html;
+}
+
+/* SEND */
+function send(){
+    let phone="989134701229";
+
+    let msg="🍟 سفارش:\n";
+    cart.forEach(c=>{
+        msg+=c.name+" - "+c.price+"\n";
     });
 
     window.open("https://wa.me/"+phone+"?text="+encodeURIComponent(msg));
 }
 
-function filter(type){
-    let cards = document.querySelectorAll(".card");
+/* TOAST */
+function toast(){
+    let t=document.getElementById("toast");
+    t.style.opacity="1";
 
-    cards.forEach(c=>{
-        c.style.display = (type=="all" || c.getAttribute("data-type")==type) ? "block":"none";
-    });
+    setTimeout(()=>t.style.opacity="0",1500);
 }
 
-function search(){
-    let val = document.getElementById("search").value.toLowerCase();
-    let cards = document.querySelectorAll(".card");
-
-    cards.forEach(c=>{
-        c.style.display = c.innerText.toLowerCase().includes(val) ? "block":"none";
-    });
-}
+/* SLIDER */
+let i=0;
+setInterval(()=>{
+    let s=document.querySelectorAll(".slide");
+    s[i].classList.remove("active");
+    i=(i+1)%s.length;
+    s[i].classList.add("active");
+},3000);
 
 </script>
 
