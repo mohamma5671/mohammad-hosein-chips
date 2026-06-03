@@ -20,12 +20,12 @@ header{
     background:linear-gradient(135deg,#ff9800,#ff5722);
     color:white;
     text-align:center;
-    padding:30px 15px;
-    border-bottom-left-radius:30px;
-    border-bottom-right-radius:30px;
+    padding:40px 15px;
+    border-bottom-left-radius:40px;
+    border-bottom-right-radius:40px;
 }
 
-/* نوار بالا */
+/* منو */
 nav{
     position:sticky;
     top:0;
@@ -34,7 +34,8 @@ nav{
     justify-content:center;
     gap:10px;
     padding:10px;
-    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+    box-shadow:0 3px 12px rgba(0,0,0,0.1);
+    z-index:10;
 }
 
 nav button{
@@ -47,17 +48,17 @@ nav button{
 }
 
 nav button:hover{
-    background:#ddd;
     transform:scale(1.05);
+    background:#ddd;
 }
 
 /* سرچ */
 #search{
     width:90%;
-    max-width:400px;
+    max-width:420px;
     margin:15px auto;
     display:block;
-    padding:10px;
+    padding:12px;
     border-radius:12px;
     border:1px solid #ccc;
 }
@@ -66,20 +67,32 @@ nav button:hover{
 .container{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:15px;
+    gap:18px;
     padding:20px;
 }
 
 .card{
     background:white;
-    border-radius:18px;
-    padding:15px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 5px 18px rgba(0,0,0,0.1);
     transition:0.25s;
 }
 
 .card:hover{
-    transform:translateY(-5px);
+    transform:translateY(-7px);
+}
+
+/* عکس */
+.card img{
+    width:100%;
+    height:160px;
+    object-fit:cover;
+}
+
+/* محتوا */
+.content{
+    padding:15px;
 }
 
 .price{
@@ -96,7 +109,7 @@ button{
 
 .add{
     width:100%;
-    padding:10px;
+    padding:12px;
     background:#25D366;
     color:white;
     border-radius:12px;
@@ -107,12 +120,11 @@ button{
 .cart{
     background:white;
     margin:20px;
-    padding:15px;
-    border-radius:18px;
+    padding:20px;
+    border-radius:20px;
     box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* حذف */
 .remove{
     background:red;
     color:white;
@@ -127,7 +139,6 @@ footer{
     padding:15px;
     background:#222;
     color:white;
-    margin-top:20px;
 }
 </style>
 
@@ -141,10 +152,10 @@ footer{
 </header>
 
 <nav>
-<button onclick="showAll()">همه</button>
+<button onclick="filter('all')">همه</button>
 <button onclick="filter('فلفلی')">فلفلی</button>
 <button onclick="filter('نمکی')">نمکی</button>
-<button onclick="filter('مخصوص')">مخصوص</button>
+<button onclick="filter('پنیری')">پنیری</button>
 </nav>
 
 <input id="search" placeholder="🔍 جستجوی چیپس..." onkeyup="search()">
@@ -152,37 +163,42 @@ footer{
 <!-- محصولات -->
 <div class="container">
 
+<!-- فلفلی -->
 <div class="card" data-type="فلفلی">
+<img src="https://images.unsplash.com/photo-1604908177522-0401f0f0f0c8?auto=format&fit=crop&w=800&q=60">
+<div class="content">
 <h3>چیپس فلفلی 🔥</h3>
-<p>تند و خوشمزه</p>
+<p>طعم تند و خوشمزه</p>
 <p class="price">۷۰,۰۰۰ تومان</p>
 <button class="add" onclick="add('چیپس فلفلی',70000)">افزودن به سبد</button>
 </div>
+</div>
 
+<!-- نمکی -->
 <div class="card" data-type="نمکی">
+<img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=60">
+<div class="content">
 <h3>چیپس نمکی 😋</h3>
 <p>طعم کلاسیک</p>
 <p class="price">۸۰,۰۰۰ تومان</p>
 <button class="add" onclick="add('چیپس نمکی',80000)">افزودن به سبد</button>
 </div>
-
-<div class="card" data-type="مخصوص">
-<h3>چیپس مخصوص 🌟</h3>
-<p>ترکیب ویژه</p>
-<p class="price">۹۰,۰۰۰ تومان</p>
-<button class="add" onclick="add('چیپس مخصوص',90000)">افزودن به سبد</button>
 </div>
 
-<div class="card" data-type="مخصوص">
+<!-- پنیری -->
+<div class="card" data-type="پنیری">
+<img src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60?auto=format&fit=crop&w=800&q=60">
+<div class="content">
 <h3>چیپس پنیری 🧀</h3>
-<p>طعم پنیر خوشمزه</p>
+<p>طعم پنیر واقعی</p>
 <p class="price">۹۵,۰۰۰ تومان</p>
 <button class="add" onclick="add('چیپس پنیری',95000)">افزودن به سبد</button>
 </div>
+</div>
 
 </div>
 
-<!-- سبد خرید -->
+<!-- سبد -->
 <div class="cart">
 <h2>🛒 سبد خرید</h2>
 <div id="cartBox">سبد خالی است</div>
@@ -253,13 +269,7 @@ function filter(type){
     let cards = document.querySelectorAll(".card");
 
     cards.forEach(c=>{
-        c.style.display = (type=="همه" || c.getAttribute("data-type")==type) ? "block":"none";
-    });
-}
-
-function showAll(){
-    document.querySelectorAll(".card").forEach(c=>{
-        c.style.display="block";
+        c.style.display = (type=="all" || c.getAttribute("data-type")==type) ? "block":"none";
     });
 }
 
