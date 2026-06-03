@@ -7,23 +7,51 @@
 
 <style>
 body{
-    font-family: Arial;
     margin:0;
-    background:#fff7e6;
+    font-family: Arial;
     direction: rtl;
+    background:#fff7e6;
 }
 
+/* نوار بالا */
 header{
     background:#ff9800;
     color:white;
-    padding:20px;
+    padding:15px;
     text-align:center;
 }
 
-.container{
+/* منو */
+nav{
+    display:flex;
+    justify-content:center;
+    background:#ffb74d;
+    flex-wrap:wrap;
+}
+
+nav button{
+    background:none;
+    border:none;
+    padding:12px 20px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+nav button:hover{
+    background:#ffa726;
+}
+
+/* بخش‌ها */
+section{
+    display:none;
     padding:20px;
 }
 
+.active{
+    display:block;
+}
+
+/* کارت محصول */
 .card{
     background:white;
     padding:15px;
@@ -34,69 +62,151 @@ header{
 
 .price{
     color:green;
-    font-size:18px;
     font-weight:bold;
+    font-size:18px;
 }
 
-button{
+/* دکمه */
+button.order{
     background:#25D366;
     color:white;
     border:none;
-    padding:10px 15px;
+    padding:10px;
     border-radius:10px;
     cursor:pointer;
-    margin-top:10px;
 }
 
-button:hover{
-    background:#1da851;
+/* سبد */
+.cart-box{
+    background:white;
+    padding:10px;
+    border-radius:10px;
 }
 
+/* فوتر */
 footer{
     text-align:center;
-    padding:15px;
+    padding:10px;
     background:#eee;
-    margin-top:20px;
 }
 </style>
-
 </head>
 
 <body>
 
 <header>
 <h1>🍟 چیپس خانگی محمد</h1>
-<p>خوشمزه • تازه • بدون مواد نگهدارنده</p>
+<p>تازه • خوشمزه • دست‌ساز</p>
 </header>
 
-<div class="container">
+<!-- منو -->
+<nav>
+<button onclick="show('home')">خانه</button>
+<button onclick="show('products')">محصولات</button>
+<button onclick="show('about')">درباره ما</button>
+<button onclick="show('cart')">سبد سفارش</button>
+</nav>
+
+<!-- صفحه اصلی -->
+<section id="home" class="active">
+<h2>به فروشگاه چیپس خوش آمدید 😋</h2>
+<p>بهترین چیپس خانگی با کیفیت بالا و قیمت مناسب</p>
+</section>
+
+<!-- محصولات -->
+<section id="products">
 
 <div class="card">
-<h2>چیپس فلفلی 60 گرمی</h2>
+<h3>چیپس فلفلی 60 گرمی</h3>
 <p>طعم تند و خوشمزه</p>
 <p class="price">۷۰,۰۰۰ تومان</p>
-<button onclick="order()">سفارش در واتساپ</button>
+<button class="order" onclick="addToCart('چیپس فلفلی',70000)">افزودن به سبد</button>
 </div>
 
 <div class="card">
-<h2>چیپس نمکی 60 گرمی</h2>
-<p>طعم ساده و کلاسیک</p>
+<h3>چیپس نمکی 60 گرمی</h3>
+<p>طعم کلاسیک و ساده</p>
 <p class="price">۸۰,۰۰۰ تومان</p>
-<button onclick="order()">سفارش در واتساپ</button>
+<button class="order" onclick="addToCart('چیپس نمکی',80000)">افزودن به سبد</button>
 </div>
 
+</section>
+
+<!-- درباره ما -->
+<section id="about">
+<h2>درباره ما</h2>
+<p>
+ما یک تیم کوچک هستیم که چیپس خانگی تازه و سالم تولید می‌کنیم.
+هدف ما ارائه طعم واقعی و طبیعی به مشتریان است.
+</p>
+</section>
+
+<!-- سبد -->
+<section id="cart">
+<h2>سبد سفارش 🛒</h2>
+<div class="cart-box" id="cartBox">
+<p>سبد خالی است</p>
 </div>
+<button class="order" onclick="sendOrder()">ارسال سفارش در واتساپ</button>
+</section>
 
 <footer>
-© 2026 چیپس خانگی محمد | همه حقوق محفوظ است
+© 2026 چیپس خانگی محمد
 </footer>
 
 <script>
-function order(){
-    let phone = "989134701229
-    let msg = "سلام، می‌خوام چیپس سفارش بدم";
-    window.open("https://wa.me/" + phone + "?text=" + msg);
+
+let cart = [];
+
+function show(id){
+    document.querySelectorAll("section").forEach(s=>{
+        s.classList.remove("active");
+    });
+    document.getElementById(id).classList.add("active");
 }
+
+function addToCart(name,price){
+    cart.push({name,price});
+    alert(name + " اضافه شد به سبد");
+    updateCart();
+}
+
+function updateCart(){
+    let box = document.getElementById("cartBox");
+    if(cart.length==0){
+        box.innerHTML = "<p>سبد خالی است</p>";
+        return;
+    }
+
+    let total = 0;
+    let html = "";
+
+    cart.forEach(i=>{
+        html += "<p>"+i.name+" - "+i.price+" تومان</p>";
+        total += i.price;
+    });
+
+    html += "<hr><b>جمع کل: "+total+" تومان</b>";
+    box.innerHTML = html;
+}
+
+function sendOrder(){
+    let phone = "989134701229";
+
+    if(cart.length==0){
+        alert("سبد خالی است");
+        return;
+    }
+
+    let msg = "سلام سفارش من:\n";
+    cart.forEach(i=>{
+        msg += i.name + " - " + i.price + "\n";
+    });
+
+    let url = "https://wa.me/"+phone+"?text="+encodeURIComponent(msg);
+    window.open(url);
+}
+
 </script>
 
 </body>
