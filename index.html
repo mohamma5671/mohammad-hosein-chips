@@ -3,14 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>چیپس محمد</title>
+<title>چیپس محمد | فروشگاه رسمی</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
+:root{
+    --main:#ff6b00;
+    --bg:#f5f7fb;
+}
+
 body{
     margin:0;
-    font-family:sans-serif;
+    font-family:Vazirmatn;
     direction:rtl;
-    background:#f5f5f5;
+    background:var(--bg);
 }
 
 /* HEADER */
@@ -22,32 +29,72 @@ header{
 }
 
 .logo{
-    width:120px;
-    height:auto;
+    width:60px;
     border-radius:50%;
-    display:block;
-    margin:0 auto;
+}
+
+/* SLIDER */
+.slider{
+    position:relative;
+    height:170px;
+    overflow:hidden;
+}
+
+.slide{
+    position:absolute;
+    width:100%;
+    height:170px;
+    object-fit:cover;
+    opacity:0;
+    transition:1s;
+}
+
+.slide.active{
+    opacity:1;
+}
+
+/* NAV */
+nav{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    background:white;
+    padding:10px;
+    position:sticky;
+    top:0;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+nav button{
+    border:none;
+    padding:10px;
+    border-radius:10px;
+    background:#eee;
 }
 
 /* PRODUCTS */
 .container{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:10px;
-    padding:10px;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+    padding:15px;
 }
 
 .card{
     background:white;
-    padding:10px;
-    border-radius:10px;
-    text-align:center;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
 }
 
 .card img{
     width:100%;
-    height:120px;
+    height:140px;
     object-fit:cover;
+}
+
+.content{
+    padding:10px;
 }
 
 .price{
@@ -56,48 +103,222 @@ header{
 }
 
 /* BUTTON */
-button{
-    padding:8px;
-    border:none;
+.add{
+    width:100%;
+    padding:10px;
     background:#25D366;
     color:white;
+    border:none;
+    border-radius:10px;
+}
+
+/* CART */
+.cart{
+    background:white;
+    margin:15px;
+    padding:15px;
+    border-radius:15px;
+}
+
+/* TOAST */
+#toast{
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#333;
+    color:white;
+    padding:10px 15px;
+    border-radius:10px;
+    opacity:0;
+    transition:0.4s;
+}
+
+/* PRODUCT PAGE */
+#productPage{
+    display:none;
+    padding:15px;
+    background:white;
+}
+
+.comment{
+    background:#f1f1f1;
+    padding:8px;
+    margin:5px 0;
     border-radius:8px;
+}
+
+footer{
+    text-align:center;
+    padding:15px;
+    background:#222;
+    color:white;
+}
+
+@media(max-width:600px){
+    header h1{font-size:18px;}
+    .slider{height:140px;}
 }
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header>
-<img src="logo.png" class="logo">
+<img src="https://api.dicebear.com/7.x/shapes/png?seed=chips" class="logo">
 <h1>چیپس محمد</h1>
-<p>فروشگاه چیپس خانگی</p>
+<p>فروشگاه رسمی چیپس خانگی</p>
 </header>
 
-<div class="container">
+<!-- SLIDER -->
+<div class="slider">
+<img class="slide active" src="https://images.unsplash.com/photo-1604908177522-0401f0f0f0c8">
+<img class="slide" src="https://images.unsplash.com/photo-1601050690597-df0568f70950">
+<img class="slide" src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60">
+</div>
 
-<div class="card">
+<!-- NAV -->
+<nav>
+<button onclick="home()">خانه</button>
+<button onclick="openCart()">سبد خرید</button>
+</nav>
+
+<!-- HOME -->
+<div class="container" id="home">
+
+<div class="card" onclick="openProduct('چیپس فلفلی',70000,'https://images.unsplash.com/photo-1604908177522-0401f0f0f0c8')">
 <img src="https://images.unsplash.com/photo-1604908177522-0401f0f0f0c8">
-<h3>چیپس فلفلی</h3>
-<p class="price">70000</p>
-<button>خرید</button>
+<div class="content">
+<h3>چیپس فلفلی 🔥</h3>
+<p class="price">۷۰,۰۰۰</p>
+</div>
 </div>
 
-<div class="card">
+<div class="card" onclick="openProduct('چیپس نمکی',80000,'https://images.unsplash.com/photo-1601050690597-df0568f70950')">
 <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950">
-<h3>چیپس نمکی</h3>
-<p class="price">80000</p>
-<button>خرید</button>
+<div class="content">
+<h3>چیپس نمکی 😋</h3>
+<p class="price">۸۰,۰۰۰</p>
+</div>
 </div>
 
-<div class="card">
+<div class="card" onclick="openProduct('چیپس پنیری',95000,'https://images.unsplash.com/photo-1621939514649-280e2ee25f60')">
 <img src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60">
-<h3>چیپس پنیری</h3>
-<p class="price">95000</p>
-<button>خرید</button>
+<div class="content">
+<h3>چیپس پنیری 🧀</h3>
+<p class="price">۹۵,۰۰۰</p>
+</div>
 </div>
 
 </div>
+
+<!-- PRODUCT PAGE -->
+<div id="productPage">
+
+<h2 id="pName"></h2>
+<p id="pPrice"></p>
+
+<button class="add" onclick="addToCart()">افزودن به سبد</button>
+
+<h3>⭐ نظرات کاربران</h3>
+<div class="comment">خیلی خوشمزه 😍</div>
+<div class="comment">کیفیت عالی 👍</div>
+<div class="comment">بسته‌بندی خوب بود 📦</div>
+
+</div>
+
+<!-- CART -->
+<div class="cart">
+<h2>🛒 سبد خرید</h2>
+<div id="cartBox">خالی است</div>
+<button class="add" onclick="send()">ثبت سفارش در واتساپ</button>
+</div>
+
+<!-- TOAST -->
+<div id="toast">اضافه شد ✔</div>
+
+<script>
+
+let cart=[];
+let current={};
+
+/* HOME */
+function home(){
+    document.getElementById("home").style.display="grid";
+    document.getElementById("productPage").style.display="none";
+}
+
+/* PRODUCT */
+function openProduct(name,price,img){
+    current={name,price};
+
+    document.getElementById("home").style.display="none";
+    document.getElementById("productPage").style.display="block";
+
+    document.getElementById("pName").innerText=name;
+    document.getElementById("pPrice").innerText=price+" تومان";
+}
+
+/* CART */
+function addToCart(){
+    cart.push(current);
+    toast();
+}
+
+/* RENDER CART */
+function openCart(){
+    let box=document.getElementById("cartBox");
+
+    if(cart.length==0){
+        box.innerHTML="سبد خالی است";
+        return;
+    }
+
+    let total=0;
+    let html="";
+
+    cart.forEach(c=>{
+        html+=c.name+" - "+c.price+"<br>";
+        total+=c.price;
+    });
+
+    html+="<hr><b>جمع کل: "+total+"</b>";
+    box.innerHTML=html;
+}
+
+/* SEND */
+function send(){
+    let phone="989134701229";
+
+    let msg="🍟 سفارش:\n";
+    cart.forEach(c=>{
+        msg+=c.name+" - "+c.price+"\n";
+    });
+
+    window.open("https://wa.me/"+phone+"?text="+encodeURIComponent(msg));
+}
+
+/* TOAST */
+function toast(){
+    let t=document.getElementById("toast");
+    t.style.opacity="1";
+
+    setTimeout(()=>t.style.opacity="0",1500);
+}
+
+/* SLIDER */
+let i=0;
+setInterval(()=>{
+    let s=document.querySelectorAll(".slide");
+    s[i].classList.remove("active");
+    i=(i+1)%s.length;
+    s[i].classList.add("active");
+},3000);
+
+</script>
 
 </body>
 </html>
+.logo{
+    
