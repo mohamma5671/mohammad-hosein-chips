@@ -24,9 +24,11 @@ header{
 }
 
 .logo{
-    width:180px;
+    width:150px;
     height:auto;
     border-radius:50%;
+    display:block;
+    margin:0 auto 10px auto;
 }
 
 /* NAV */
@@ -36,6 +38,7 @@ nav{
     gap:10px;
     background:white;
     padding:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
 
 /* PRODUCTS */
@@ -51,6 +54,7 @@ nav{
     border-radius:15px;
     overflow:hidden;
     box-shadow:0 3px 10px rgba(0,0,0,0.1);
+    cursor:pointer;
     transition:0.3s;
 }
 
@@ -81,6 +85,7 @@ nav{
     color:white;
     border:none;
     border-radius:10px;
+    cursor:pointer;
 }
 
 /* CART */
@@ -91,7 +96,7 @@ nav{
     border-radius:15px;
 }
 
-/* COMMENT */
+/* COMMENTS */
 .comment{
     background:#eee;
     padding:8px;
@@ -104,6 +109,8 @@ input{
     width:100%;
     padding:8px;
     margin:5px 0;
+    border:1px solid #ccc;
+    border-radius:8px;
 }
 
 /* TOAST */
@@ -114,9 +121,10 @@ input{
     transform:translateX(-50%);
     background:#333;
     color:white;
-    padding:10px;
+    padding:10px 15px;
     border-radius:10px;
     opacity:0;
+    transition:0.3s;
 }
 </style>
 </head>
@@ -126,7 +134,7 @@ input{
 <header>
 <img src="logo.png" class="logo">
 <h1>چیپس محمد</h1>
-<p>فروشگاه رسمی چیپس خانگی</p>
+<p>فروشگاه چیپس خانگی تازه 🍟</p>
 </header>
 
 <nav>
@@ -139,7 +147,7 @@ input{
 <div class="card" onclick="openProduct('چیپس فلفلی',70000)">
 <img src="https://images.unsplash.com/photo-1604908177522-0401f0f0f0c8">
 <div class="content">
-<h3>چیپس فلفلی</h3>
+<h3>چیپس فلفلی 🔥</h3>
 <p class="price">۷۰,۰۰۰</p>
 </div>
 </div>
@@ -147,8 +155,16 @@ input{
 <div class="card" onclick="openProduct('چیپس نمکی',80000)">
 <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950">
 <div class="content">
-<h3>چیپس نمکی</h3>
+<h3>چیپس نمکی 😋</h3>
 <p class="price">۸۰,۰۰۰</p>
+</div>
+</div>
+
+<div class="card" onclick="openProduct('چیپس پنیری',95000)">
+<img src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60">
+<div class="content">
+<h3>چیپس پنیری 🧀</h3>
+<p class="price">۹۵,۰۰۰</p>
 </div>
 </div>
 
@@ -160,17 +176,17 @@ input{
 
 <button class="add" onclick="addToCart()">افزودن به سبد</button>
 
-<h3>نظرات کاربران</h3>
+<h3>⭐ نظرات کاربران</h3>
 
-<input id="name" placeholder="اسم">
-<input id="text" placeholder="نظر">
+<input id="name" placeholder="اسم شما">
+<input id="text" placeholder="نظر شما">
 <button class="add" onclick="addComment()">ارسال نظر</button>
 
 <div id="commentsBox"></div>
 </div>
 
 <div class="cart">
-<h2>سبد خرید</h2>
+<h2>🛒 سبد خرید</h2>
 <div id="cartBox">خالی است</div>
 <button class="add" onclick="send()">ثبت سفارش واتساپ</button>
 </div>
@@ -198,14 +214,7 @@ function openProduct(name,price){
 }
 
 function addToCart(){
-    let found = cart.find(c=>c.name===current.name);
-
-    if(found){
-        found.qty++;
-    }else{
-        cart.push({...current,qty:1});
-    }
-
+    cart.push({...current,qty:1});
     toast();
 }
 
@@ -221,10 +230,8 @@ function openCart(){
     let html="";
 
     cart.forEach((c,i)=>{
-        let sum=c.price*c.qty;
-        total+=sum;
-
-        html+=`${c.name} ×${c.qty} = ${sum} <button onclick="removeItem(${i})">❌</button><br>`;
+        total+=c.price*c.qty;
+        html+=`${c.name} = ${c.price} <button onclick="removeItem(${i})">❌</button><br>`;
     });
 
     html+="<hr><b>جمع کل: "+total+"</b>";
@@ -241,7 +248,7 @@ function send(){
 
     let msg="🍟 سفارش:\n";
     cart.forEach(c=>{
-        msg+=c.name+" ×"+c.qty+"\n";
+        msg+=c.name+"\n";
     });
 
     window.open("https://wa.me/"+phone+"?text="+encodeURIComponent(msg));
