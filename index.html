@@ -3,53 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>چیپس محمد | لوگو</title>
-
-<style>
-body{
-    margin:0;
-    font-family:sans-serif;
-    direction:rtl;
-    background:#f5f7fb;
-    text-align:center;
-}
-
-/* هدر */
-header{
-    background:linear-gradient(135deg,#ff9800,#ff5722);
-    color:white;
-    padding:20px;
-}
-
-/* لوگو */
-.logo{
-    width:180px;
-    height:auto;
-    border-radius:50%;
-    margin-top:20px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);
-}
-</style>
-</head>
-
-<body>
-
-<!-- HEADER -->
-<header>
-    <h1>چیپس محمد</h1>
-    <p>فروشگاه رسمی چیپس خانگی</p>
-</header>
-
-<!-- لوگو -->
-<img src="logo.png" class="logo" alt="لوگوی چیپس محمد">
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="fa">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>چیپس محمد | فروشگاه رسمی</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700&display=swap" rel="stylesheet">
@@ -362,4 +315,130 @@ setInterval(()=>{
     i=(i+1)%s.length;
     s[i].classList.add("active");
 },3000);
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>چیپس محمد | فروشگاه رسمی</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    font-family:Vazirmatn;
+    direction:rtl;
+    background:#f5f7fb;
+}
+
+/* HEADER */
+header{
+    background:linear-gradient(135deg,#ff9800,#ff5722);
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+.logo{
+    width:120px;
+    height:auto;
+    border-radius:50%;
+}
+
+/* PRODUCTS */
+.container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+    padding:15px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+.card img{
+    width:100%;
+    height:140px;
+    object-fit:cover;
+}
+
+.content{
+    padding:10px;
+}
+
+.price{
+    color:green;
+    font-weight:bold;
+}
+
+/* BUTTON */
+.add{
+    width:100%;
+    padding:10px;
+    background:#25D366;
+    color:white;
+    border:none;
+    border-radius:10px;
+}
+
+/* CART */
+.cart{
+    background:white;
+    margin:15px;
+    padding:15px;
+    border-radius:15px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+<img src="logo.png" class="logo">
+<h1>چیپس محمد</h1>
+<p>فروشگاه رسمی چیپس خانگی</p>
+</header>
+
+<!-- PRODUCTS -->
+<div class="container">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1604908177522-0401f0f0f0c8">
+<div class="content">
+<h3>چیپس فلفلی</h3>
+<p class="price">۷۰,۰۰۰</p>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1601050690597-df0568f70950">
+<div class="content">
+<h3>چیپس نمکی</h3>
+<p class="price">۸۰,۰۰۰</p>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60">
+<div class="content">
+<h3>چیپس پنیری</h3>
+<p class="price">۹۵,۰۰۰</p>
+</div>
+</div>
+
+</div>
+
+<!-- CART -->
+<div class="cart">
+<h2>🛒 سبد خرید</h2>
+<p>فعلاً ساده شده نسخه تست</p>
+</div>
+
+</body>
+</html>
