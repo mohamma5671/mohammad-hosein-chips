@@ -5,84 +5,102 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>چیپس خانگی محمد</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
 body{
     margin:0;
-    font-family:Tahoma;
+    font-family:Vazirmatn;
     direction:rtl;
-    background:#f4f6f8;
+    background:#f5f7fb;
 }
 
 /* هدر */
 header{
-    background:linear-gradient(90deg,#ff9800,#ff5722);
+    background:linear-gradient(135deg,#ff9800,#ff5722);
     color:white;
     text-align:center;
-    padding:25px;
+    padding:30px 15px;
+    border-bottom-left-radius:30px;
+    border-bottom-right-radius:30px;
 }
 
-/* منو */
+/* نوار بالا */
 nav{
+    position:sticky;
+    top:0;
     background:white;
     display:flex;
     justify-content:center;
     gap:10px;
     padding:10px;
-    position:sticky;
-    top:0;
-    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
 }
 
 nav button{
     border:none;
     padding:10px 15px;
-    border-radius:10px;
+    border-radius:12px;
     cursor:pointer;
     background:#eee;
+    transition:0.2s;
 }
 
 nav button:hover{
     background:#ddd;
+    transform:scale(1.05);
+}
+
+/* سرچ */
+#search{
+    width:90%;
+    max-width:400px;
+    margin:15px auto;
+    display:block;
+    padding:10px;
+    border-radius:12px;
+    border:1px solid #ccc;
 }
 
 /* محصولات */
 .container{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
     gap:15px;
     padding:20px;
 }
 
 .card{
     background:white;
-    border-radius:15px;
+    border-radius:18px;
     padding:15px;
-    box-shadow:0 3px 10px rgba(0,0,0,0.1);
-    transition:0.2s;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transition:0.25s;
 }
 
 .card:hover{
-    transform:scale(1.03);
+    transform:translateY(-5px);
 }
 
 .price{
-    color:green;
+    color:#2ecc71;
     font-size:18px;
     font-weight:bold;
 }
 
 /* دکمه */
 button{
-    padding:10px;
     border:none;
-    border-radius:10px;
     cursor:pointer;
 }
 
 .add{
+    width:100%;
+    padding:10px;
     background:#25D366;
     color:white;
-    width:100%;
+    border-radius:12px;
+    margin-top:10px;
 }
 
 /* سبد */
@@ -90,7 +108,17 @@ button{
     background:white;
     margin:20px;
     padding:15px;
-    border-radius:15px;
+    border-radius:18px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* حذف */
+.remove{
+    background:red;
+    color:white;
+    padding:5px 8px;
+    border-radius:8px;
+    margin-right:5px;
 }
 
 /* فوتر */
@@ -99,6 +127,7 @@ footer{
     padding:15px;
     background:#222;
     color:white;
+    margin-top:20px;
 }
 </style>
 
@@ -108,50 +137,52 @@ footer{
 
 <header>
 <h1>🍟 چیپس خانگی محمد</h1>
-<p>خوشمزه • تازه • دست‌ساز</p>
+<p>تازه • خوشمزه • حرفه‌ای • دست‌ساز</p>
 </header>
 
 <nav>
-<button onclick="filter('all')">همه</button>
+<button onclick="showAll()">همه</button>
 <button onclick="filter('فلفلی')">فلفلی</button>
 <button onclick="filter('نمکی')">نمکی</button>
 <button onclick="filter('مخصوص')">مخصوص</button>
 </nav>
 
+<input id="search" placeholder="🔍 جستجوی چیپس..." onkeyup="search()">
+
 <!-- محصولات -->
 <div class="container">
 
 <div class="card" data-type="فلفلی">
-<h3>چیپس فلفلی</h3>
-<p>تند و خوشمزه 🔥</p>
+<h3>چیپس فلفلی 🔥</h3>
+<p>تند و خوشمزه</p>
 <p class="price">۷۰,۰۰۰ تومان</p>
 <button class="add" onclick="add('چیپس فلفلی',70000)">افزودن به سبد</button>
 </div>
 
 <div class="card" data-type="نمکی">
-<h3>چیپس نمکی</h3>
-<p>طعم کلاسیک 😋</p>
+<h3>چیپس نمکی 😋</h3>
+<p>طعم کلاسیک</p>
 <p class="price">۸۰,۰۰۰ تومان</p>
 <button class="add" onclick="add('چیپس نمکی',80000)">افزودن به سبد</button>
 </div>
 
 <div class="card" data-type="مخصوص">
-<h3>چیپس مخصوص</h3>
-<p>ترکیبی ویژه 🌟</p>
+<h3>چیپس مخصوص 🌟</h3>
+<p>ترکیب ویژه</p>
 <p class="price">۹۰,۰۰۰ تومان</p>
 <button class="add" onclick="add('چیپس مخصوص',90000)">افزودن به سبد</button>
 </div>
 
 <div class="card" data-type="مخصوص">
-<h3>چیپس پنیری</h3>
-<p>طعم پنیر خوشمزه 🧀</p>
+<h3>چیپس پنیری 🧀</h3>
+<p>طعم پنیر خوشمزه</p>
 <p class="price">۹۵,۰۰۰ تومان</p>
 <button class="add" onclick="add('چیپس پنیری',95000)">افزودن به سبد</button>
 </div>
 
 </div>
 
-<!-- سبد -->
+<!-- سبد خرید -->
 <div class="cart">
 <h2>🛒 سبد خرید</h2>
 <div id="cartBox">سبد خالی است</div>
@@ -184,12 +215,21 @@ function render(){
     let html = "";
 
     cart.forEach((c,i)=>{
-        html += `<p>${c.name} - ${c.price} تومان</p>`;
+        html += `
+        <p>
+        ${c.name} - ${c.price} تومان
+        <button class="remove" onclick="removeItem(${i})">حذف</button>
+        </p>`;
         total += c.price;
     });
 
     html += "<hr><b>جمع کل: "+total+" تومان</b>";
     box.innerHTML = html;
+}
+
+function removeItem(i){
+    cart.splice(i,1);
+    render();
 }
 
 function send(){
@@ -200,10 +240,10 @@ function send(){
         return;
     }
 
-    let msg = "سلام سفارش من:\n";
+    let msg = "🍟 سفارش جدید:\n\n";
 
     cart.forEach(c=>{
-        msg += c.name + " - " + c.price + "\n";
+        msg += "▪ " + c.name + " - " + c.price + " تومان\n";
     });
 
     window.open("https://wa.me/"+phone+"?text="+encodeURIComponent(msg));
@@ -213,8 +253,22 @@ function filter(type){
     let cards = document.querySelectorAll(".card");
 
     cards.forEach(c=>{
-        let t = c.getAttribute("data-type");
-        c.style.display = (type=="all" || t==type) ? "block":"none";
+        c.style.display = (type=="همه" || c.getAttribute("data-type")==type) ? "block":"none";
+    });
+}
+
+function showAll(){
+    document.querySelectorAll(".card").forEach(c=>{
+        c.style.display="block";
+    });
+}
+
+function search(){
+    let val = document.getElementById("search").value.toLowerCase();
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(c=>{
+        c.style.display = c.innerText.toLowerCase().includes(val) ? "block":"none";
     });
 }
 
