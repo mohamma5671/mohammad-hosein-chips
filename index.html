@@ -357,3 +357,44 @@ function removeItem(i){
     cart.splice(i,1);
     openCart();
 }
+<h3>⭐ نظرات کاربران</h3>
+
+<input id="name" placeholder="اسم شما" style="width:100%;padding:8px;margin:5px 0;">
+<input id="text" placeholder="نظر شما" style="width:100%;padding:8px;margin:5px 0;">
+<button onclick="addComment()" class="add">ارسال نظر</button>
+
+<div id="commentsBox"></div>
+function addComment(){
+    let name=document.getElementById("name").value;
+    let text=document.getElementById("text").value;
+
+    if(name=="" || text=="") return;
+
+    let div=document.createElement("div");
+    div.className="comment";
+    div.innerHTML="<b>"+name+":</b> "+text;
+
+    document.getElementById("commentsBox").prepend(div);
+
+    document.getElementById("name").value="";
+    document.getElementById("text").value="";
+}
+body{
+    background:#f1f4f9;
+}
+
+.card{
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:scale(1.03);
+}
+
+.add{
+    transition:0.3s;
+}
+
+.add:hover{
+    background:#1db954;
+}
