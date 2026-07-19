@@ -1,184 +1,198 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <meta name="google-site-verification" content="ms3guY7g9U0X9XKcyPKQHYuAmAthyCGcGL9OfrVSIQQ" />
 
-<title>چیپس محمد</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>چیپس محمد</title>
+<title>چیپس محمد | فروش چیپس خانگی</title>
+
+<meta name="description" content="فروش چیپس خانگی تازه، نمکی، فلفلی و پنیری">
+<meta name="keywords" content="چیپس محمد, چیپس خانگی, چیپس فلفلی, چیپس نمکی, چیپس پنیری">
+<meta name="robots" content="index,follow">
 
 <style>
+
 body{
-    font-family:tahoma;
-    margin:0;
-    background:#f5f5f5;
-    direction:rtl;
+margin:0;
+padding:0;
+font-family:tahoma;
+direction:rtl;
+background:#f5f5f5;
 }
 
 header{
-    background:#ff7a00;
-    color:white;
-    text-align:center;
-    padding:20px;
+background:#ff7a00;
+color:white;
+text-align:center;
+padding:25px;
 }
 
 .logo{
-    width:120px;
-    height:auto;
+width:120px;
+height:auto;
+border-radius:50%;
 }
 
 .products{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:20px;
-    padding:20px;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+padding:20px;
 }
 
 .card{
-    background:white;
-    width:250px;
-    border-radius:15px;
-    box-shadow:0 0 10px rgba(0,0,0,0.2);
-    overflow:hidden;
+width:260px;
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 0 10px rgba(0,0,0,.2);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
 }
 
 .card img{
-    width:100%;
-    height:180px;
-    object-fit:cover;
+width:100%;
+height:180px;
+object-fit:cover;
 }
 
 .card h3{
-    margin:10px;
+margin:10px;
 }
 
 .price{
-    color:green;
-    font-weight:bold;
+color:green;
+font-weight:bold;
+margin:10px;
 }
 
 button{
-    background:#25D366;
-    color:white;
-    border:none;
-    padding:10px;
-    border-radius:10px;
-    margin:10px;
-    cursor:pointer;
+background:#25D366;
+color:white;
+border:none;
+padding:12px;
+border-radius:10px;
+cursor:pointer;
+margin:10px;
+width:90%;
+font-size:16px;
+}
+
+button:hover{
+background:#1da851;
+}
+
+.info{
+background:white;
+margin:20px;
+padding:20px;
+border-radius:15px;
+box-shadow:0 0 8px rgba(0,0,0,.1);
 }
 
 footer{
-    background:#222;
-    color:white;
-    text-align:center;
-    padding:15px;
-    margin-top:20px;
+background:#222;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:20px;
 }
+
 </style>
+
 </head>
 
 <body>
 
 <header>
-    <img src="logo.png" class="logo" alt="لوگو">
-    <h1>🍟 چیپس محمد</h1>
-    <p>چیپس خانگی تازه و خوشمزه</p>
+
+<img src="logo.png" class="logo">
+
+<h1>🍟 چیپس محمد</h1>
+
+<p>چیپس خانگی تازه و خوشمزه</p>
+
 </header>
 
 <div class="products">
-
     <div class="card">
-        <img src="https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=800" alt="">
-        <h3>چیپس نمکی</h3>
-        <p class="price">50,000 تومان</p>
-        <button onclick="order('چیپس نمکی')">سفارش</button>
-    </div>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1585238342024-78d387f4a707?w=800" alt="">
-        <h3>چیپس فلفلی</h3>
-        <p class="price">60,000 تومان</p>
-        <button onclick="order('چیپس فلفلی')">سفارش</button>
-    </div>
+<img src="https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=800" alt="چیپس نمکی">
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1621447504864-d8686e12698c?w=800" alt="">
-        <h3>چیپس پنیری</h3>
-        <p class="price">70,000 تومان</p>
-        <button onclick="order('چیپس پنیری')">سفارش</button>
-    </div>
+<h3>🥔 چیپس نمکی</h3>
+
+<p class="price">50,000 تومان</p>
+
+<p style="margin:10px;">📦 وزن: 60 گرم</p>
+
+<button onclick="order('چیپس نمکی')">سفارش</button>
 
 </div>
 
-<footer>
-📞 تماس: 09134701229
-<br>
-🍟 چیپس محمد
-</footer>
+<div class="card">
 
-<script>
-function order(product){
-    let phone = "989134701229";
-    let msg = "سلام، می‌خواهم " + product + " سفارش بدهم.";
-    window.open(
-        "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg),
-        "_blank"
-    );
-}
-</script>
+<img src="https://images.unsplash.com/photo-1585238342024-78d387f4a707?w=800" alt="چیپس فلفلی">
 
-</body>
-</html>
-<!-- درباره ما -->
-<div style="background:white;padding:20px;margin:20px;border-radius:15px;">
-    <h2>📖 درباره ما</h2>
-    <p>
-        چیپس محمد تولیدکننده چیپس خانگی تازه، خوشمزه و باکیفیت است.
-    </p>
-</div>
+<h3>🌶️ چیپس فلفلی</h3>
 
-<!-- نظرات مشتریان -->
-<div style="background:white;padding:20px;margin:20px;border-radius:15px;">
-    <h2>⭐ نظرات مشتریان</h2>
-
-    <p>⭐⭐⭐⭐⭐ خیلی خوشمزه بود 😍</p>
-
-    <p>⭐⭐⭐⭐⭐ بسته‌بندی عالی بود 📦</p>
-
-    <p>⭐⭐⭐⭐⭐ دوباره سفارش می‌دهم 👍</p>
-</div>
-
-<!-- تماس با ما -->
-<div style="background:white;padding:20px;margin:20px;border-radius:15px;">
-    <h2>📞 تماس با ما</h2>
-
-    <p>واتساپ: 09134701229</p>
-</div>
 <p class="price">60,000 تومان</p>
 
-<span style="background:red;color:white;padding:5px;border-radius:8px;">
-🔥 پرفروش
-</span>
+<span style="background:red;color:white;padding:5px 10px;border-radius:8px;margin:10px;display:inline-block;">🔥 پرفروش</span>
 
-<p>⭐⭐⭐⭐⭐ (4.9)</p>
+<p style="margin:10px;">📦 وزن: 60 گرم</p>
 
-<p>📦 وزن: 60 گرم</p>
+<p style="margin:10px;">⭐⭐⭐⭐⭐ (4.9)</p>
 
-<p style="background:#fff3cd;padding:10px;border-radius:10px;">
-🚚 ارسال به سراسر شهر
-<br>
-💰 هزینه ارسال بر اساس آدرس و بر عهده مشتری است.
+<button onclick="order('چیپس فلفلی')">سفارش</button>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1621447504864-d8686e12698c?w=800" alt="چیپس پنیری">
+
+<h3>🧀 چیپس پنیری</h3>
+
+<p class="price">70,000 تومان</p>
+
+<p style="margin:10px;">📦 وزن: 60 گرم</p>
+
+<button onclick="order('چیپس پنیری')">سفارش</button>
+
+</div>
+
+</div>
+
+<div class="info">
+
+<h2>📖 درباره ما</h2>
+
+<p>
+چیپس محمد تولیدکننده چیپس خانگی تازه، ترد و خوشمزه است.
+تمام محصولات با سیب‌زمینی تازه و ادویه‌های باکیفیت تهیه می‌شوند.
 </p>
 
-<button onclick="order('چیپس فلفلی')">
-سفارش
-<div style="background:#e8f5e9;padding:15px;border-radius:15px;margin:20px;">
+</div>
+
+<div class="info">
+
+<h2>⭐ نظرات مشتریان</h2>
+
+<p>⭐⭐⭐⭐⭐ خیلی خوشمزه بود 😍</p>
+
+<p>⭐⭐⭐⭐⭐ بسته‌بندی عالی بود 📦</p>
+
+<p>⭐⭐⭐⭐⭐ دوباره سفارش می‌دهم 👍</p>
+
+</div>
+
+<div class="info">
 
 <h2>ℹ️ اطلاعات فروشگاه</h2>
 
@@ -188,7 +202,7 @@ function order(product){
 
 <p>🚚 ارسال به سراسر شهر</p>
 
-<p>💰 هزینه ارسال بر عهده مشتری می‌باشد</p>
+<p>💰 هزینه ارسال بر عهده مشتری می‌باشد.</p>
 
 <p>🏆 کیفیت تضمین‌شده</p>
 
@@ -196,14 +210,46 @@ function order(product){
 
 <p>🧂 استفاده از ادویه‌های باکیفیت</p>
 
-<p>📦 بسته‌بندی بهداشتی</p>
-
-<p>⭐ رضایت مشتریان: 4.9 از 5</p>
-
-<p>🔥 پرفروش‌ترین محصول: چیپس فلفلی</p>
-
 <p>🎁 تخفیف برای خرید 3 بسته یا بیشتر</p>
 
-<p>📞 پشتیبانی سفارش‌ها در واتساپ</p>
+<p>📞 واتساپ: 09134701229</p>
 
 </div>
+<footer>
+
+📞 تماس: 09134701229
+
+<br><br>
+
+🚚 ارسال به سراسر شهر (هزینه ارسال بر عهده مشتری)
+
+<br><br>
+
+🕙 ساعت کاری: هر روز از 10 صبح تا 8 شب
+
+<br><br>
+
+© 2026 چیپس محمد
+
+</footer>
+
+<script>
+
+function order(product){
+
+let phone="989134701229";
+
+let message="سلام، می‌خواهم "+product+" سفارش بدهم.";
+
+window.open(
+"https://wa.me/"+phone+"?text="+encodeURIComponent(message),
+"_blank"
+);
+
+}
+
+</script>
+
+</body>
+
+</html>
